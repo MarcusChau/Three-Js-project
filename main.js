@@ -48,6 +48,10 @@ const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(lightHelper, gridHelper);
 
 
+// orbital controls
+const controls = new OrbitControls(camera, renderer.domElement);
+
+
 // constant loop to animate the image through the animate function
 function animate() {
   requestAnimationFrame( animate );
@@ -55,6 +59,8 @@ function animate() {
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
+
+  controls.update();
 
   renderer.render( scene, camera );
 }
