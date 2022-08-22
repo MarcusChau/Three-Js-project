@@ -2,6 +2,8 @@ import './style.css'
 
 import * as THREE from 'three';
 
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
 
 // Three.js always starts with 3 const: scene, camera, and renderer
 const scene = new THREE.Scene();
