@@ -40,6 +40,12 @@ const ambientLight = new THREE.AmbientLight( 0xffffff );
 scene.add( pointLight, ambientLight ); 
 
 
+// Helper functions in order to make it easier to see what is going on
+const lightHelper = new THREE.PointLightHelper( pointLight )
+const gridHelper = new THREE.GridHelper(200, 50);
+scene.add(lightHelper, gridHelper);
+
+
 // constant loop to animate the image through the animate function
 function animate() {
   requestAnimationFrame( animate );
