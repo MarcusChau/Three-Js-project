@@ -52,6 +52,21 @@ scene.add(lightHelper, gridHelper);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 
+// Dispersing random obj into the surroundings
+function addObjects() {
+  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
+  const obj = new THREE.Mesh(geometry, material);
+
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ));
+
+  obj.position.set(x, y, z);
+  scene.add(obj)
+}
+
+Array(200).fill().forEach(addObjects);
+
+
 // constant loop to animate the image through the animate function
 function animate() {
   requestAnimationFrame( animate );
