@@ -4,6 +4,10 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
+const gltfLoader = new GLTFLoader();
+
 
 // Three.js always starts with 3 const: scene, camera, and renderer
 const scene = new THREE.Scene();
@@ -43,13 +47,29 @@ scene.add( pointLight, ambientLight );
 
 
 // Helper functions in order to make it easier to see what is going on
-const lightHelper = new THREE.PointLightHelper( pointLight )
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+//const lightHelper = new THREE.PointLightHelper( pointLight )
+//const gridHelper = new THREE.GridHelper(200, 50);
+//scene.add(lightHelper, gridHelper);
+
+
+// Point
+gltfLoader.load('point.glb', (gltf) => {
+  scene.add(gltf.scene)
+})
 
 
 // orbital controls
 const controls = new OrbitControls(camera, renderer.domElement);
+
+
+// Automatic window resizing
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+}
 
 
 // Dispersing random obj into the surroundings
