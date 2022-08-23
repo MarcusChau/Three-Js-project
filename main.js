@@ -67,6 +67,11 @@ function addObjects() {
 Array(200).fill().forEach(addObjects);
 
 
+// background change
+const spaceTexture = new THREE.TextureLoader().load('darkmatter.jfif');
+scene.background = spaceTexture;
+
+
 // constant loop to animate the image through the animate function
 function animate() {
   requestAnimationFrame( animate );
