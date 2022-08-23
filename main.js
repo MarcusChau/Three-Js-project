@@ -49,10 +49,21 @@ const innerRing = new THREE.Mesh(
   new THREE.MeshStandardMaterial( { 
     map: splashTexture,
     normalMap: bumpTexture,
-   } ),
+   }),
 )
 
 scene.add(innerRing)
+
+
+const sphere = new THREE.Mesh(
+  new THREE.SphereGeometry( 5, 10, 100 ),
+  new THREE.MeshStandardMaterial( {
+    map: splashTexture,
+    normalMap: bumpTexture,
+  })
+)
+
+scene.add(sphere)
 
 
 // Creating the light
