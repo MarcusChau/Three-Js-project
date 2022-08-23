@@ -29,12 +29,30 @@ renderer.render( scene, camera );
 
 
 // A shape that is part of the three.js library, the material: standard means that you need light in order to see it, and mesh is the function that you use to put the shape together
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100 )
-const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } );
-const torus = new THREE.Mesh( geometry, material );
+const splashTexture = new THREE.TextureLoader().load('clash.jfif');
+const bumpTexture = new THREE.TextureLoader().load('Bumps.jpg');
+
+const torus = new THREE.Mesh( 
+  new THREE.TorusGeometry( 15, 2, 16, 10 ),
+  new THREE.MeshStandardMaterial( { 
+    map: splashTexture,
+    normalMap: bumpTexture,
+   } ),
+);
+
 
 // Use the add function to add the shape into the frame
 scene.add(torus);
+
+const innerRing = new THREE.Mesh(
+  new THREE.TorusGeometry( 9, 2, 16, 10 ),
+  new THREE.MeshStandardMaterial( { 
+    map: splashTexture,
+    normalMap: bumpTexture,
+   } ),
+)
+
+scene.add(innerRing)
 
 
 // Creating the light
@@ -96,9 +114,13 @@ scene.background = spaceTexture;
 function animate() {
   requestAnimationFrame( animate );
 
-  torus.rotation.x += 0.01;
+  torus.rotation.x += 0.006;
   torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
+  torus.rotation.z += 0.007;
+
+  innerRing.rotation.x += -0.006;
+  innerRing.rotation.y += -0.02;
+  innerRing.rotation.z += -0.007;
 
   controls.update();
 
