@@ -29,8 +29,8 @@ renderer.render( scene, camera );
 
 
 // A shape that is part of the three.js library, the material: standard means that you need light in order to see it, and mesh is the function that you use to put the shape together
-const splashTexture = new THREE.TextureLoader().load('clash.jfif');
-const bumpTexture = new THREE.TextureLoader().load('Bumps.jpg');
+const splashTexture = new THREE.TextureLoader().load('/clash.jfif');
+const bumpTexture = new THREE.TextureLoader().load('/Bumps.jpg');
 
 const torus = new THREE.Mesh( 
   new THREE.TorusGeometry( 15, 2, 16, 10 ),
@@ -65,6 +65,30 @@ const sphere = new THREE.Mesh(
 
 scene.add(sphere)
 
+const Molecule = new THREE.Mesh(
+  new THREE.SphereGeometry(50, 50, 50),
+  new THREE.MeshStandardMaterial( {
+    map: splashTexture,
+    normalMap: bumpTexture,
+  })
+)
+
+scene.add(Molecule)
+
+const MoleculeTwo = new THREE.Mesh(
+  new THREE.SphereGeometry(15, 15, 15),
+  new THREE.MeshStandardMaterial( {
+    map: splashTexture,
+    normalMap: bumpTexture,
+  })
+)
+
+scene.add(MoleculeTwo)
+
+MoleculeTwo.position.setX(30);
+MoleculeTwo.position.setZ(40);
+MoleculeTwo.position.setY(10);
+
 
 // Creating the light
 const pointLight = new THREE.PointLight( 0xffffff );
@@ -82,7 +106,7 @@ scene.add( pointLight, ambientLight );
 
 
 // Point
-gltfLoader.load('point.glb', (gltf) => {
+gltfLoader.load('/point.glb', (gltf) => {
   scene.add(gltf.scene)
 })
 
@@ -107,17 +131,17 @@ function addObjects() {
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
   const obj = new THREE.Mesh(geometry, material);
 
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ));
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 300 ));
 
   obj.position.set(x, y, z);
   scene.add(obj)
 }
 
-Array(200).fill().forEach(addObjects);
+Array(700).fill().forEach(addObjects);
 
 
 // background change
-const spaceTexture = new THREE.TextureLoader().load('darkmatter.jfif');
+const spaceTexture = new THREE.TextureLoader().load('/darkmatter.jfif');
 scene.background = spaceTexture;
 
 
