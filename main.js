@@ -1,12 +1,11 @@
-import './style.css'
+import './public/css/style.css'
 
 import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-
-const gltfLoader = new GLTFLoader();
+import { SpotLight } from 'three';
 
 
 // Three.js always starts with 3 const: scene, camera, and renderer
@@ -29,75 +28,23 @@ renderer.render( scene, camera );
 
 
 // A shape that is part of the three.js library, the material: standard means that you need light in order to see it, and mesh is the function that you use to put the shape together
-const splashTexture = new THREE.TextureLoader().load('/clash.jfif');
-const bumpTexture = new THREE.TextureLoader().load('/Bumps.jpg');
-
-const torus = new THREE.Mesh( 
-  new THREE.TorusGeometry( 15, 2, 16, 10 ),
-  new THREE.MeshStandardMaterial( { 
-    map: splashTexture,
-    normalMap: bumpTexture,
-   } ),
-);
-
-
-// Use the add function to add the shape into the frame
-scene.add(torus);
-
-const innerRing = new THREE.Mesh(
-  new THREE.TorusGeometry( 9, 2, 16, 10 ),
-  new THREE.MeshStandardMaterial( { 
-    map: splashTexture,
-    normalMap: bumpTexture,
-   }),
-)
-
-scene.add(innerRing)
-
-
-const sphere = new THREE.Mesh(
-  new THREE.SphereGeometry( 5, 10, 100 ),
-  new THREE.MeshStandardMaterial( {
-    map: splashTexture,
-    normalMap: bumpTexture,
-  })
-)
-
-scene.add(sphere)
-
-const Molecule = new THREE.Mesh(
-  new THREE.SphereGeometry(50, 50, 50),
-  new THREE.MeshStandardMaterial( {
-    map: splashTexture,
-    normalMap: bumpTexture,
-  })
-)
-
-scene.add(Molecule)
-
-const MoleculeTwo = new THREE.Mesh(
-  new THREE.SphereGeometry(15, 15, 15),
-  new THREE.MeshStandardMaterial( {
-    map: splashTexture,
-    normalMap: bumpTexture,
-  })
-)
-
-scene.add(MoleculeTwo)
-
-MoleculeTwo.position.setX(30);
-MoleculeTwo.position.setZ(40);
-MoleculeTwo.position.setY(10);
+const splashTexture = new THREE.TextureLoader().load('/img/clash.jfif');
+const bumpTexture = new THREE.TextureLoader().load('/img/Bumps.jpg');
 
 
 // Creating the light
 const pointLight = new THREE.PointLight( 0xffffff );
-pointLight.position.set( 20, 20, 20 );
+pointLight.position.set( 0, 50, 50 );
 
 const ambientLight = new THREE.AmbientLight( 0xffffff );
 
 scene.add( pointLight, ambientLight ); 
 
+
+const spotlight1 = new THREE.SpotLight( 0xffffff );
+spotlight1.position.set(0, 100, -100);
+
+scene.add( spotlight1 ) 
 
 // Helper functions in order to make it easier to see what is going on
 //const lightHelper = new THREE.PointLightHelper( pointLight )
@@ -105,9 +52,15 @@ scene.add( pointLight, ambientLight );
 //scene.add(lightHelper, gridHelper);
 
 
+// loading gltf 
+const gltfLoader = new GLTFLoader();
+
 // Point
-gltfLoader.load('/point.glb', (gltf) => {
-  scene.add(gltf.scene)
+gltfLoader.load('/img/Marcus.glb', function (gltf) {
+  const humanMesh = gltf.scene.children.find((child) => child.name === "Marcus");
+  humanMesh.scale.set(15, 15, 15);
+  humanMesh.position.setY(-15);
+  scene.add(humanMesh)
 })
 
 
@@ -141,21 +94,13 @@ Array(700).fill().forEach(addObjects);
 
 
 // background change
-const spaceTexture = new THREE.TextureLoader().load('/darkmatter.jfif');
+const spaceTexture = new THREE.TextureLoader().load('/img/darkmatter.jfif');
 scene.background = spaceTexture;
 
 
 // constant loop to animate the image through the animate function
 function animate() {
   requestAnimationFrame( animate );
-
-  torus.rotation.x += 0.006;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.007;
-
-  innerRing.rotation.x += -0.006;
-  innerRing.rotation.y += -0.02;
-  innerRing.rotation.z += -0.007;
 
   controls.update();
 
