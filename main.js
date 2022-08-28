@@ -1,11 +1,14 @@
-import './public/css/style.css'
+import '/style.css';
 
 import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { SpotLight } from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+
+//import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+
+//import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 
 // Three.js always starts with 3 const: scene, camera, and renderer
@@ -51,15 +54,44 @@ scene.add( spotlight1 )
 //const gridHelper = new THREE.GridHelper(200, 50);
 //scene.add(lightHelper, gridHelper);
 
+// colors
+const colors = 0xffffff * Math.random();
 
 // loading gltf 
 const gltfLoader = new GLTFLoader();
+ 
+// let mixer;
 
-// Point
+// const fbx = new FBXLoader();
+
+// fbx.load('/Hip Hop Dancing.fbx', (fbx) => {
+//   mixer = new THREE.AnimationMixer( obj );
+//   let action = mixer.clipAction( obj.animations[0] );
+//   action.play();
+//   fbx.traverse( c => {
+//     c.castShadow = true;
+//   });
+//   scene.add(fbx);
+
+//   mixer = new THREE.AnimationMixer(fbx);
+//   manager = new THREE.LoadingManager();
+
+// });
+
+// const loader = new OBJLoader();
+// loader.load('/img/72.obj', object => {
+//   object.rotateX(30);
+//   object.scale.set(15, 15, 15);
+//   object.position.setY(-15);
+//   scene.add(object);
+// })
+
+
 gltfLoader.load('/img/Marcus.glb', function (gltf) {
   const humanMesh = gltf.scene.children.find((child) => child.name === "Marcus");
   humanMesh.scale.set(15, 15, 15);
   humanMesh.position.setY(-15);
+  humanMesh.material.color.set( colors );
   scene.add(humanMesh)
 })
 
