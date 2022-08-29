@@ -30,7 +30,21 @@
     </button>
 
     <div class="form">
-
+      <div class="welcome">
+        WELCOME
+      </div>
+      <div class="body">
+        <div class="play-around">
+          Play Around! <span class="hint">( Hover for Hint? )</span>
+        </div>
+        <div class="words">
+          <p>⚡&emsp;The Suprise - Click on my model and turn up your volume!</p>
+          <p>⚡&emsp;Click on the button on the bottom left side to change colors...</p>
+          <p>⚡&emsp;You can use the scroll wheel to zoom in and out...</p>
+          <p>⚡&emsp;You can also hold the left mouse click to look around...</p>
+          <p>⚡&emsp;Want to stop the background music? Click on me again...</p>
+        </div>
+      </div>
     </div>
 
     
@@ -41,16 +55,19 @@
         const hamburger= document.querySelector(".hamburger");
         const closeIcon= document.querySelector(".closeIcon");
         const menuIcon = document.querySelector(".menuIcon");
+        const form = document.querySelector(".form");
 
         function toggleMenu() {
           if (menu.classList.contains("showMenu")) {
             menu.classList.remove("showMenu");
             closeIcon.style.display = "none";
             menuIcon.style.display = "block";
+            form.style.display = "block";
           } else {
             menu.classList.add("showMenu");
             closeIcon.style.display = "block";
             menuIcon.style.display = "none";
+            form.style.display = "none";
           }
         }
 

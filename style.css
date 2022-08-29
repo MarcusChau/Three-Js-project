@@ -61,4 +61,41 @@ p {
   font-size: 16px;
   background-color: #55c2da;
   font-weight: 500;
+  color: #1C1C1E;
+}
+
+.form {
+  color: white;
+  font-family: 'Poppins';
+  position: absolute;
+  padding: 16px;
+}
+
+.welcome {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.body {
+  font-size: 22px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.body:hover .words {
+  display: block;
+}
+
+.words {
+  background-color: #1C1C1E;
+  display: none;
+}
+
+.play-around{
+  padding-top: 20px;
+}
+
+.hint {
+  color: #55c2da;
+  font-size: 16px;
 }
