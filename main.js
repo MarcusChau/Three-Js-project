@@ -30,11 +30,6 @@ camera.position.setZ(30);
 renderer.render( scene, camera );
 
 
-// A shape that is part of the three.js library, the material: standard means that you need light in order to see it, and mesh is the function that you use to put the shape together
-const splashTexture = new THREE.TextureLoader().load('/img/clash.jfif');
-const bumpTexture = new THREE.TextureLoader().load('/img/Bumps.jpg');
-
-
 // Creating the light
 const pointLight = new THREE.PointLight( 0xffffff );
 pointLight.position.set( 0, 50, 50 );
@@ -57,9 +52,121 @@ scene.add( spotlight1 )
 // colors
 const colors = 0xffffff * Math.random();
 
-// loading gltf 
+// loading gltf function
 const gltfLoader = new GLTFLoader();
- 
+// loaded GLTF
+var humanMesh;
+
+gltfLoader.load('/img/Marcus.glb', function (gltf) {
+  humanMesh = gltf.scene.children.find((child) => child.name === "Marcus");
+  humanMesh.traverse((o) => {
+    if (o.isMesh) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+  });
+  humanMesh.scale.set(15, 15, 15);
+  humanMesh.position.setY(-15);
+  function addColor() {
+    humanMesh.material.color.set( colors );
+  }
+  addColor();
+  scene.add(humanMesh)
+}); 
+
+
+
+// Audio loader
+const listener = new THREE.AudioListener();
+camera.add(listener);
+const myVoice = new THREE.Audio( listener );
+// Create Audioloader to load all sound files
+const audioLoader = new THREE.AudioLoader();
+
+// load sound files
+// audioLoader.load('/Welcome to my website.m4a', (buffer) => {
+//   myVoice.setBuffer(buffer);
+//   myVoice.setVolume(1);
+//   myVoice.play();
+// });
+
+
+// Audio loader
+const listener1 = new THREE.AudioListener();
+camera.add(listener1);
+const background = new THREE.Audio( listener1 );
+// Create Audioloader to load all sound files
+const audioLoader1 = new THREE.AudioLoader();
+
+// load sound files
+// audioLoader1.load('/IEROD1900372-midnight-320.mp3', (buffer) => {
+//   background.setBuffer(buffer);
+//   background.setVolume(0.2);
+//   console.log("playing");
+//   background.play();
+// });
+
+
+// raycaster as well as variable to keep track for pause and play of audio
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+var numberOfClickForOne = 0;
+var pausePlay = 0;
+
+
+// Event listener to see whether the gltf was clicked 
+renderer.domElement.addEventListener('pointerup', (event) => {
+  mouse.x = (event.clientX / renderer.domElement.clientWidth - renderer.domElement.getBoundingClientRect().x) * 2 - 1;
+  mouse.y = -(event.clientY / renderer.domElement.clientHeight + renderer.domElement.getBoundingClientRect().y) * 2 + 1;
+  
+  console.log(mouse.x, mouse.y);
+
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(scene.children, true);
+
+  if (intersects.length > 0) {
+    //console.log("Model clicked.");
+    //console.log(numberOfClickForOne);
+    // for my voice to play
+    if(numberOfClickForOne == 0) {
+      numberOfClickForOne++;
+      audioLoader.load('/Welcome to my website.m4a', (buffer) => {
+        myVoice.setBuffer(buffer);
+        myVoice.setVolume(1);
+        myVoice.play();
+      });
+    }
+
+
+    // For Pause and Play of background music
+    if(pausePlay == 0) {
+      pausePlay ++;
+      // load sound files
+      audioLoader1.load('/IEROD1900372-midnight-320.mp3', (buffer) => {
+        background.setBuffer(buffer);
+        background.setVolume(0.3);
+        console.log("Playing");
+        background.play();
+      });
+    }
+    else {
+      pausePlay--;
+      console.log("Pausing");
+      background.pause();
+    }
+  }
+});
+
+let btn = document.createElement("button");
+btn.setAttribute('id', 'changeColor');
+btn.setAttribute('class', 'changeColor');
+btn.innerHTML = "Change Color";
+btn.onclick = function () {
+  humanMesh.material.color.set( 0xffffff * Math.random() );
+};
+document.body.appendChild(btn);
+
 // let mixer;
 
 // const fbx = new FBXLoader();
@@ -85,15 +192,6 @@ const gltfLoader = new GLTFLoader();
 //   object.position.setY(-15);
 //   scene.add(object);
 // })
-
-
-gltfLoader.load('/img/Marcus.glb', function (gltf) {
-  const humanMesh = gltf.scene.children.find((child) => child.name === "Marcus");
-  humanMesh.scale.set(15, 15, 15);
-  humanMesh.position.setY(-15);
-  humanMesh.material.color.set( colors );
-  scene.add(humanMesh)
-})
 
 
 // orbital controls

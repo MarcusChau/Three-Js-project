@@ -9,18 +9,18 @@
     <title>Marcus Chau</title>
   </head>
   <body>
-
     <canvas id="bg"></canvas>
     <main class="menu">
-
-      <section>
-
+      <div class="intro">
+        hello
+      </div>
+      <div class="options">
         <p>Use the Scroll Wheel to zoom in and out</p>
         <p>Hold down the left button on the mouse and drag to move around</p>
   
         <button><a href="#">Click here to Start</a></button>
-
-      </section>
+      </div>
+        
 
     </main>
     <button class="hamburger">
@@ -29,9 +29,15 @@
       <i class="closeIcon material-icons">close</i>
     </button>
 
+    <div class="form">
+
+    </div>
+
+    
+    <script type="module" src="/main.js"></script>
+
     <script>
         const menu = document.querySelector(".menu");
-        const menuItems = document.querySelectorAll(".menuItem");
         const hamburger= document.querySelector(".hamburger");
         const closeIcon= document.querySelector(".closeIcon");
         const menuIcon = document.querySelector(".menuIcon");
@@ -49,9 +55,7 @@
         }
 
         hamburger.addEventListener("click", toggleMenu);
-      </script>
-
-    <script type="module" src="/main.js"></script>
+    </script>
 
   </body>
 

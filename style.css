@@ -39,9 +39,26 @@ p {
   background: transparent;
   color: white;
   list-style: none;
-  padding-top: 4rem;
+  height: 2in;
+}
+
+.intro {
+  padding-top: 1rem;
+  padding-left: 4rem;
 }
 
 .showMenu {
   transform: translateY(0);
+}
+
+.changeColor {
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  border-radius: 10px;
+  padding: 4px;
+  font-family: 'Poppins';
+  font-size: 16px;
+  background-color: #55c2da;
+  font-weight: 500;
 }
