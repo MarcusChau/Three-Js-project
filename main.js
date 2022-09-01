@@ -146,13 +146,13 @@ renderer.domElement.addEventListener('pointerup', (event) => {
       audioLoader1.load('/IEROD1900372-midnight-320.mp3', (buffer) => {
         background.setBuffer(buffer);
         background.setVolume(0.3);
-        console.log("Playing");
+        //console.log("Playing");
         background.play();
       });
     }
     else {
       pausePlay--;
-      console.log("Pausing");
+      //console.log("Pausing");
       background.pause();
     }
   }
