@@ -240,4 +240,3 @@ function animate() {
 
 // Calling the animation function
 animate()
-
