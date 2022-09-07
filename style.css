@@ -14,7 +14,7 @@ p {
 
 .hamburger {
   position: fixed;
-  z-index: 100;
+  z-index: 9;
   top: 1rem;
   right: 1rem;
   padding: 4px;
@@ -35,7 +35,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99;
+  z-index: 8;
   background: transparent;
   color: white;
   list-style: none;
@@ -116,4 +116,53 @@ p {
 a {
   text-decoration: none;
   color: black;
+}
+
+.splash {
+  position: absolute;
+  color: white;
+  background-color: black;
+  z-index: -10;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  animation: fadeOut 5s;
+  opacity: 0;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    z-index: 100;
+  }
+  100% {
+    opacity: 0;
+    z-index: 0;
+  }
+}
+
+.logo-header {
+  position: absolute;
+  bottom: 20%;
+  right: 30%;
+  translate: (-50%, -50%);
+  animation: spin 4s;
+  
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.splash-screen-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }

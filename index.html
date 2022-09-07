@@ -9,27 +9,38 @@
     <title>Marcus Chau</title>
   </head>
   <body>
+
+    <div class="splash">
+      <h1 class="logo-header">
+        <img class="splash-screen-img" src="/img/brainLogo.png" alt="Splash Screen Image">
+      </h1>
+    </div>
+
+    <!-- Background -->
     <canvas id="bg"></canvas>
+
+    <!-- menu -->
     <main class="menu">
       <div class="intro">
         Hello! Want to view my Portfolio? 
       </div>
       <div class="options">
-        <button class="click-here"><a href="#">Click Here</a></button>
+        <button class="click-here"><a href="home.html">Click Here</a></button>
       </div>
-        
-
     </main>
+    <!-- Hamburger menu -->
     <button class="hamburger">
       <!-- material icons https://material.io/resources/icons/ -->
       <i class="menuIcon material-icons">menu</i>
       <i class="closeIcon material-icons">close</i>
     </button>
 
+    <!-- Introduction -->
     <div class="form">
       <div class="welcome">
         WELCOME
       </div>
+      <!-- Hints -->
       <div class="body">
         <div class="play-around">
           Play Around! <span class="hint">( Hover for Hint? )</span>
@@ -48,6 +59,7 @@
     <script type="module" src="/main.js"></script>
 
     <script>
+      // Hamburger Menu
         const menu = document.querySelector(".menu");
         const hamburger= document.querySelector(".hamburger");
         const closeIcon= document.querySelector(".closeIcon");
