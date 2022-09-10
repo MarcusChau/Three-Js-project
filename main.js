@@ -49,34 +49,72 @@ scene.add( spotlight1 )
 //const gridHelper = new THREE.GridHelper(200, 50);
 //scene.add(lightHelper, gridHelper);
 
+
 // colors
 const colors = 0xffffff * Math.random();
 
 // loading gltf function
 const gltfLoader = new GLTFLoader();
-// loaded GLTF
-var humanMesh;
 
+// Setting variable
+var humanMesh, laptop;
+
+// Loading Myself
 gltfLoader.load('/img/Marcus.glb', function (gltf) {
+  // finding the child in scene and locating the child with name Marcus
   humanMesh = gltf.scene.children.find((child) => child.name === "Marcus");
+  humanMesh.name = "Marcus";
   humanMesh.traverse((o) => {
     if (o.isMesh) {
       o.castShadow = true;
       o.receiveShadow = true;
     }
   });
+
+  // Scaling to make image larger
   humanMesh.scale.set(15, 15, 15);
+
+  // Setting position lower after scale to center
   humanMesh.position.setY(-15);
+
+  // Adding color to the GLTF
   function addColor() {
-    humanMesh.material.color.set( colors );
+    humanMesh.material.color.set( 0xff0000 );
   }
+
+  // Calling function to add color
   addColor();
+
+  // Adding 3D image of myself to scene/screen
   scene.add(humanMesh)
 }); 
 
 
+// loading laptop
+gltfLoader.load('/img/laptop.glb', function(gltf) {
+  // Finding scene with laptop
+  laptop = gltf.scene.children.find((child) => child.name === "Laptop");
+  laptop.name = "Laptop";
+  laptop.traverse((o) => {
+    if(o.isMesh) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+  })
 
-// Audio loader
+  // rotate laptop to be facing foward
+  laptop.rotateZ(Math.PI/2);
+
+  // placing position
+  laptop.position.setX(-1);
+  laptop.position.setZ(-10);
+  laptop.position.setY(-20);
+
+  scene.add(laptop)
+})
+
+
+// Audio loader for my voice
 const listener = new THREE.AudioListener();
 camera.add(listener);
 const myVoice = new THREE.Audio( listener );
@@ -91,12 +129,9 @@ const audioLoader = new THREE.AudioLoader();
 // });
 
 
-// Audio loader
+// Audio loader for background music
 const listener1 = new THREE.AudioListener();
 camera.add(listener1);
-const background = new THREE.Audio( listener1 );
-// Create Audioloader to load all sound files
-const audioLoader1 = new THREE.AudioLoader();
 
 // load sound files
 // audioLoader1.load('/IEROD1900372-midnight-320.mp3', (buffer) => {
@@ -111,20 +146,21 @@ const audioLoader1 = new THREE.AudioLoader();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 var numberOfClickForOne = 0;
-var pausePlay = 0;
 
 
 // Event listener to see whether the gltf was clicked 
 renderer.domElement.addEventListener('pointerup', (event) => {
+  // Checking intersection where the mouse was clicked
   mouse.x = (event.clientX / renderer.domElement.clientWidth - renderer.domElement.getBoundingClientRect().x) * 2 - 1;
   mouse.y = -(event.clientY / renderer.domElement.clientHeight + renderer.domElement.getBoundingClientRect().y) * 2 + 1;
   
-  console.log(mouse.x, mouse.y);
+  //console.log(mouse.x, mouse.y);
 
   raycaster.setFromCamera(mouse, camera);
 
   const intersects = raycaster.intersectObjects(scene.children, true);
 
+  // Checking if intersection
   if (intersects.length > 0) {
     //console.log("Model clicked.");
     //console.log(numberOfClickForOne);
@@ -138,26 +174,12 @@ renderer.domElement.addEventListener('pointerup', (event) => {
       });
     }
 
-
-    // For Pause and Play of background music
-    if(pausePlay == 0) {
-      pausePlay ++;
-      // load sound files
-      audioLoader1.load('/IEROD1900372-midnight-320.mp3', (buffer) => {
-        background.setBuffer(buffer);
-        background.setVolume(0.3);
-        //console.log("Playing");
-        background.play();
-      });
-    }
-    else {
-      pausePlay--;
-      //console.log("Pausing");
-      background.pause();
-    }
+    window.location.href = ('home.html');
   }
 });
 
+
+// Creating the change color button 
 let btn = document.createElement("button");
 btn.setAttribute('id', 'changeColor');
 btn.setAttribute('class', 'changeColor');

@@ -10,11 +10,14 @@
   </head>
   <body>
 
+    <!--
+    Splash Screen
     <div class="splash">
       <h1 class="logo-header">
         <img class="splash-screen-img" src="/img/brainLogo.png" alt="Splash Screen Image">
       </h1>
     </div>
+    -->
 
     <!-- Background -->
     <canvas id="bg"></canvas>
@@ -53,6 +56,10 @@
           <p>⚡&emsp;Want to stop the background music? Click on me again...</p>
         </div>
       </div>
+
+      <div class="pausenPlay">
+        <button class='button'></button>
+      </div>
     </div>
 
     
@@ -81,6 +88,21 @@
         }
 
         hamburger.addEventListener("click", toggleMenu);
+
+        const btn = document.querySelector(".button");
+        var audio = new Audio('/IEROD1900372-midnight-320.mp3');
+
+        function togglePause() {
+          btn.classList.toggle("paused");
+          if( btn.classList.contains("paused")){
+            audio.play();
+          }
+          else {
+            audio.pause();
+          }
+        }
+
+        btn.addEventListener("click", togglePause)
     </script>
 
   </body>
