@@ -90,6 +90,7 @@ p {
 .words {
   background-color: #1C1C1E;
   display: none;
+  font-size: 18px;
 }
 
 .play-around{

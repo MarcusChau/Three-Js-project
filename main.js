@@ -164,6 +164,11 @@ renderer.domElement.addEventListener('pointerup', (event) => {
   if (intersects.length > 0) {
     //console.log("Model clicked.");
     //console.log(numberOfClickForOne);
+
+    // Going to my other page
+    window.location.href = ('home.html');
+  }
+  else {
     // for my voice to play
     if(numberOfClickForOne == 0) {
       numberOfClickForOne++;
@@ -173,8 +178,6 @@ renderer.domElement.addEventListener('pointerup', (event) => {
         myVoice.play();
       });
     }
-
-    window.location.href = ('home.html');
   }
 });
 
