@@ -47,6 +47,11 @@ function Command() {
             innerList += "<div>" + about.join('') + "</div>";
             listEvent.innerHTML = innerList;
             break;
+        case 'clear':
+            console.log('clear');
+            innerList = "";
+            listEvent.innerHTML = innerList;
+            break;
         default:
             innerList += "<div>Command not found. For list of commands, type 'help'.</div>";
             listEvent.innerHTML = innerList;
