@@ -166,7 +166,7 @@ renderer.domElement.addEventListener('pointerup', (event) => {
     //console.log(numberOfClickForOne);
 
     // Going to my other page
-    window.location.href = ('home.html');
+    window.location.href = ('/home.html');
   }
   else {
     // for my voice to play
