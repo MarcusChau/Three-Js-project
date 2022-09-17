@@ -25,7 +25,7 @@ let about = [
 
 document.addEventListener('keydown', (event) => {
     if(event.key === "Enter") {
-        temp = terminalWindow.value.toLowerCase();
+        temp = terminalWindow.value;
         innerList += textLabel + "  " + temp ;
         listEvent.innerHTML = innerList;
         Command();
@@ -36,7 +36,7 @@ document.addEventListener('keydown', (event) => {
 
 
 function Command() {
-    switch(temp) {
+    switch(temp.toLowerCase()) {
         case 'help':
             console.log("help");
             innerList += "<div>" + help.join('') + "</div>";
@@ -47,5 +47,8 @@ function Command() {
             innerList += "<div>" + about.join('') + "</div>";
             listEvent.innerHTML = innerList;
             break;
+        default:
+            innerList += "<div>Command not found. For list of commands, type 'help'.</div>";
+            listEvent.innerHTML = innerList;
     }
 }
