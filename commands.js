@@ -2,7 +2,7 @@ var terminalWindow = document.getElementById("terminal-window");
 var temp;
 let innerList = "";
 let listEvent = document.querySelector('.listEvent');
-let textLabel = document.querySelector('.textLabel');
+let textLabel = '<label><span class="cSlash">C:\\visitor@marcuschau</span> <span class="symbol">: ~ $</span></label>'
 
 let help = [
     '<br>',
@@ -26,7 +26,7 @@ let about = [
 document.addEventListener('keydown', (event) => {
     if(event.key === "Enter") {
         temp = terminalWindow.value.toLowerCase();
-        innerList += "<div>" + textLabel.innerText + "  " + temp + "</div>";
+        innerList += textLabel + "  " + temp ;
         listEvent.innerHTML = innerList;
         Command();
         terminalWindow.value = '';

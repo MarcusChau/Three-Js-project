@@ -1,7 +1,11 @@
+:root {
+    --main-text-color: #55B4D4;
+}
+
 body {
     background-color: #0f1419;
     font-family: 'Poppins';
-    color: #fff;
+    color: var(--main-text-color);
 }
 
 .bodyValues {
@@ -17,7 +21,7 @@ li {
 }
 
 textarea {
-    color: #fff;
+    color: var(--main-text-color);
     border: 0;
     caret-color: blueviolet;
     background-color: transparent;
@@ -36,6 +40,10 @@ textarea {
 
 label {
     padding-right: 4px;
+}
+
+.symbol {
+    color: #86b300;
 }
 
 .glow {
