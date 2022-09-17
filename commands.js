@@ -2,15 +2,16 @@ var terminalWindow = document.getElementById("terminal-window");
 var temp;
 let innerList = "";
 let listEvent = document.querySelector('.listEvent');
+let textLabel = document.querySelector('.textLabel');
 
 let help = [
     '<br>',
-    '<pre><li><span>whois</span>      Who is Marcus Chau?</li></pre>',
-    '<pre><li><span>projects</span>   View coding projects</li></pre>',
-    '<pre><li><span>social</span>     Display social networks</li></pre>',
-    '<pre><li><span>resume</span>     View my resume</li></pre>',
-    '<pre><li><span>help</span>       Help??</li></pre>',
-    '<pre><li><span>clear</span>      Clear Terminal</li></pre>',
+    '<pre><li>  <span class="glow">whois</span>      Who is Marcus Chau?</li></pre>',
+    '<pre><li>  <span class="glow">projects</span>   View coding projects</li></pre>',
+    '<pre><li>  <span class="glow">social</span>     Display social networks</li></pre>',
+    '<pre><li>  <span class="glow">resume</span>     View my resume</li></pre>',
+    '<pre><li>  <span class="glow">help</span>       Help??</li></pre>',
+    '<pre><li>  <span class="glow">clear</span>      Clear Terminal</li></pre>',
     '<br>'
 ]
 
@@ -25,6 +26,8 @@ let about = [
 document.addEventListener('keydown', (event) => {
     if(event.key === "Enter") {
         temp = terminalWindow.value.toLowerCase();
+        innerList += "<div>" + textLabel.innerText + "  " + temp + "</div>";
+        listEvent.innerHTML = innerList;
         Command();
         terminalWindow.value = '';
         event.preventDefault();
