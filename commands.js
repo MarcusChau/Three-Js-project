@@ -6,7 +6,7 @@ let textLabel = '<label><span class="cSlash">C:\\visitor@marcuschau</span> <span
 
 let help = [
     '<br>',
-    '<pre><li>  <span class="glow">whois</span>      Who is Marcus Chau?</li></pre>',
+    '<pre><li>  <span class="glow">about</span>      Who is Marcus Chau?</li></pre>',
     '<pre><li>  <span class="glow">projects</span>   View coding projects</li></pre>',
     '<pre><li>  <span class="glow">social</span>     Display social networks</li></pre>',
     '<pre><li>  <span class="glow">resume</span>     View my resume</li></pre>',
@@ -42,8 +42,8 @@ function Command() {
             innerList += "<div>" + help.join('') + "</div>";
             listEvent.innerHTML = innerList;
             break;
-        case 'about me':
-            console.log("about me");
+        case 'about':
+            console.log("about");
             innerList += "<div>" + about.join('') + "</div>";
             listEvent.innerHTML = innerList;
             break;
