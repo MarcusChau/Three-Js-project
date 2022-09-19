@@ -48,10 +48,9 @@ let resume = [
 ]
 
 let intro = [
-    '<pre><li>Hello my name is Marcus Chau</li></pre>',
-    '<pre><li>Welcome to my interactive web terminal.</li></pre>',
-    '<pre><li>For a list of available commands, type <span class="glow">\'help\'</span>.</li></pre>',
-    '<br>'
+    '<li>Hello my name is Marcus Chau</li>',
+    '<li>Welcome to my interactive web terminal.</li>',
+    '<li>For a list of available commands, type <span class="glow">\'help\'</span>.</li>'
 ]
 
 innerList += "<div>" + intro.join('') + "</div>";
@@ -104,7 +103,7 @@ function Command() {
             scrollDown();
             break;
         default:
-            innerList += "<div>Command not found. For list of commands, type 'help'.</div>";
+            innerList += "<div>Command not found. For list of commands, type <span class='glow'>'help'</span>.</div>";
             listEvent.innerHTML = innerList;
             break;
     }
