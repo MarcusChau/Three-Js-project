@@ -32,7 +32,6 @@ textarea {
 #terminal-window {
     font-size: 14px;
 }
-
 .input {
     display: flex;
     font-size: 14px;
@@ -59,4 +58,13 @@ label {
     to {
       text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
     }
-  }
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
