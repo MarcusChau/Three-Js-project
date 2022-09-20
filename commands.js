@@ -71,9 +71,12 @@ let whatis = [
 ]
 
 let quotes = [
-
+    '<br>',
+    '<pre><li>  <span class="default">"Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."</span><span class="term">   -Albert Einstien</span></li></pre>',
+    '<pre><li>  <span class="default">"Once we accept our limits, we go beyond them."</span><span class="term">  -Albert Einstien</span></li></pre>',
+    '<pre><li>  <span class="default">"You never fail until you stop trying."</span><span class="term">  -Albert Einstien</span></li></pre>',
+    '</br>'
 ]
-
 
 innerList += "<div>" + banner.join('') + "</div>";
 listEvent.innerHTML = innerList;
@@ -130,6 +133,12 @@ function Command() {
             innerList += "<div>" + email.join('') + "</div>";
             listEvent.innerHTML = innerList;
             window.open(gmail);
+            scrollDown();
+            break;
+        case 'quotes':
+            console.log("quote");
+            innerList += "<div>" + quotes.join('') + "</div>";
+            listEvent.innerHTML = innerList;
             scrollDown();
             break;
         case 'clear':
