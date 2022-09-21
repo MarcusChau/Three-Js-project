@@ -11,16 +11,13 @@ var instagram = "https://www.instagram.com/marcusrchau/";
 var youtube = "https://www.youtube.com/channel/UCVr_FBbu-EICLoV8tuaU63A";
 var gmail = "mailto:marcuschau8786@gmail.com";
 
-let history = [
-
-]
+let history = []
 
 let help = [
     '<br>',
     '<pre><li>  <span class="glow">about</span>         <span class="term">Who is Marcus Chau?</span></li></pre>',
     '<pre><li>  <span class="glow">whatis</span>        <span class="term">What is life?</span></li></pre>',
     '<pre><li>  <span class="glow">quotes</span>        <span class="term">Who said what?</span></li></pre>',
-    '<pre><li>  <span class="glow">projects</span>      <span class="term">View coding projects</span></li></pre>',
     '<pre><li>  <span class="glow">social</span>        <span class="term">Display social networks</span></li></pre>',
     '<pre><li>  <span class="glow">resume</span>        <span class="term">View my resume</span></li></pre>',
     '<pre><li>  <span class="glow">email</span>         <span class="term">Please don\'t spam!</span></li></pre>',
@@ -59,7 +56,7 @@ let email = [
 ]
 
 let banner = [
-    '<li><span class="term">Hello my name is Marcus Chau</span></li>',
+    '<li><span class="term">Hello it\'s Marcus Chau</span></li>',
     '<li><span class="term">Welcome to my interactive web terminal.</span></li>',
     '<li><span class="term">For a list of available commands, type</span> <span class="glow">\'help\'</span><span class="term">.</span></li>'
 ]
@@ -77,6 +74,7 @@ let quotes = [
     '<pre><li>  <span class="default">"You never fail until you stop trying."</span><span class="term">  -Albert Einstien</span></li></pre>',
     '</br>'
 ]
+
 
 innerList += "<div>" + banner.join('') + "</div>";
 listEvent.innerHTML = innerList;
