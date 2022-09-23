@@ -69,9 +69,9 @@ let whatis = [
 
 let quotes = [
     '<br>',
-    '<pre><li>  <span class="default">"Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."</span><span class="term">   -Albert Einstien</span></li></pre>',
-    '<pre><li>  <span class="default">"Once we accept our limits, we go beyond them."</span><span class="term">  -Albert Einstien</span></li></pre>',
-    '<pre><li>  <span class="default">"You never fail until you stop trying."</span><span class="term">  -Albert Einstien</span></li></pre>',
+    '<pre><li>  <span class="default">"Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."</span><span class="term">   -Albert Einstein</span></li></pre>',
+    '<pre><li>  <span class="default">"Once we accept our limits, we go beyond them."</span><span class="term">  -Albert Einstein</span></li></pre>',
+    '<pre><li>  <span class="default">"You never fail until you stop trying."</span><span class="term">  -Albert Einstein</span></li></pre>',
     '</br>'
 ]
 

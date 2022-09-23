@@ -14,5 +14,17 @@
   "dependencies": {
     "three": "^0.143.0",
     "threex.domevents": "^1.0.1"
-  }
+  },
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcusChau/PersonalPortfolio.git"
+  },
+  "author": "Marcus Chau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcusChau/PersonalPortfolio/issues"
+  },
+  "homepage": "https://github.com/MarcusChau/PersonalPortfolio#readme",
+  "description": "Personal Website"
 }
