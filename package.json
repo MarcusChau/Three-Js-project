@@ -15,7 +15,7 @@
     "three": "^0.143.0",
     "threex.domevents": "^1.0.1"
   },
-  "main": "index.html",
+  "main": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MarcusChau/PersonalPortfolio.git"
